@@ -1,22 +1,22 @@
 import { Injectable } from "@angular/core";
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Video } from "./video.model";
+import { Observable } from "rxjs/Observable";
 
 @Injectable()
 export class Repository {
     videos: Video[] = [];
     currentVideo: Video;
 
-    constructor() {
+    constructor(public http: HttpClient) {
         this.getVideos();
     }
 
-    getVideos() {
-        let video = new Video(1, "Big Buck Bunny", "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4");
-        this.currentVideo = video;
-        this.videos.push(video);
-        this.videos.push(new Video(2, "Toy helicopter", "http://techslides.com/demos/sample-videos/small.mp4"));
-        this.videos.push(new Video(3, "Toy Story", "http://www.html5videoplayer.net/videos/toystory.mp4"));
-        this.videos.push(new Video(4, "Star trails", "http://mirrors.standaloneinstaller.com/video-sample/star_trails.mp4"));
+    getVideos() {        
+        this.http.get('/playlist').subscribe(videos => {
+            this.videos = videos as Video[];
+            this.currentVideo = this.videos[0];
+        });
     }
 
     selectVideo(id: number)  {
