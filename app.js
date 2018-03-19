@@ -11,7 +11,12 @@ const db = [
   {
     videoId: 1,
     name: "Big Buck Bunny",
-    url: "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
+    url: "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4",
+    subtitle: {
+      label: "Ejemplo",
+      srclang: "en",
+      src: "/assets/video/Big Buck Bunny.vtt"
+    }
   },
   {
     videoId: 2,

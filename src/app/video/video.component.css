@@ -45,3 +45,7 @@
 	width: 10px;
 	background: yellowgreen;
 }
+
+#controls {
+    clear: both;
+}

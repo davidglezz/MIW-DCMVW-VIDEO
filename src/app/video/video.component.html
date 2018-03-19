@@ -1,6 +1,8 @@
 <div>
   <div id="player">
-    <video #videoRef id="video" src={{repo?.currentVideo?.url}}></video>
+    <video #videoRef id="video" src={{repo?.currentVideo?.url}}>
+      <track *ngIf="repo?.currentVideo?.subtitle" [label]="repo.currentVideo.subtitle.label" [srclang]="repo.currentVideo.subtitle.srclang" [src]="repo.currentVideo.subtitle.src" default [hidden]="toggleSubtitlesState=='ON'">
+    </video>
     <div id="positionview">
       <div id="transportbar" (click)="changePosition($event)">
         <div id="position" [ngStyle]="{ 'width': progressWidth }"></div>
@@ -32,6 +34,9 @@
       </button>
       <button (click)="toggleMute()">
         <img src="{{toggleMuteUrl}}" alt="{{toggleMuteState}}" title="{{toggleMuteState}}" />
+      </button>
+      <button (click)="toggleSubtitles()">
+        <img src="{{toggleSubtitlesUrl}}" alt="{{toggleSubtitlesState}}" title="{{toggleSubtitlesState}}" />
       </button>
     </div>
   </div>
