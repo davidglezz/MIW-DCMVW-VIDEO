@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MPD
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="urn:mpeg:DASH:schema:MPD:2011"
+  xsi:schemaLocation="urn:mpeg:DASH:schema:MPD:2011"
+  type="static"
+  mediaPresentationDuration="PT596.483S"
+  minBufferTime="PT1S"
+  profiles="urn:webm:dash:profile:webm-on-demand:2012">
+<Period id="0" start="PT0S" duration="PT596.483S" >
+<AdaptationSet id="0" mimeType="video/webm" codecs="vp9" bitstreamSwitching="true" subsegmentAlignment="true" subsegmentStartsWithSAP="1">
+<Representation id="0" bandwidth="95010" width="160" height="90">
+<BaseURL>BigBuckBunny_160x90_100k.webm</BaseURL>
+<SegmentBase
+  indexRange="5385529-5387446">
+<Initialization
+  range="0-437" />
+</SegmentBase>
+</Representation>
+<Representation id="1" bandwidth="465759" width="320" height="180">
+<BaseURL>BigBuckBunny_320x180_500k.webm</BaseURL>
+<SegmentBase
+  indexRange="25198553-25200501">
+<Initialization
+  range="0-439" />
+</SegmentBase>
+</Representation>
+<Representation id="2" bandwidth="883338" width="640" height="360">
+<BaseURL>BigBuckBunny_640x360_900k.webm</BaseURL>
+<SegmentBase
+  indexRange="48091015-48092995">
+<Initialization
+  range="0-441" />
+</SegmentBase>
+</Representation>
+<Representation id="3" bandwidth="1553577" width="1280" height="720">
+<BaseURL>BigBuckBunny_1280x720_1500k.webm</BaseURL>
+<SegmentBase
+  indexRange="83669073-83671068">
+<Initialization
+  range="0-441" />
+</SegmentBase>
+</Representation>
+</AdaptationSet>
+<AdaptationSet id="1" mimeType="audio/webm" codecs="vorbis" audioSamplingRate="48000" bitstreamSwitching="true" subsegmentAlignment="true" subsegmentStartsWithSAP="1">
+<Representation id="4" bandwidth="133813">
+<BaseURL>BigBuckBunny_audio_128k.webm</BaseURL>
+<SegmentBase
+  indexRange="9009648-9012043">
+<Initialization
+  range="0-6973" />
+</SegmentBase>
+</Representation>
+</AdaptationSet>
+</Period>
+</MPD>
