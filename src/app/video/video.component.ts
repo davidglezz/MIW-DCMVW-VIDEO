@@ -13,18 +13,14 @@ export class VideoComponent implements OnInit {
   private readonly PAUSE_URL = "'../../assets/img/pause.png";
   private readonly MUTE_URL = "'../../assets/img/mute.png";
   private readonly UNMUTE_URL = "'../../assets/img/unmute.png";
-  private readonly SUBTITLES_ON_URL = "'../../assets/img/subtitles_on.png";
-  private readonly SUBTITLES_OFF_URL = "'../../assets/img/subtitles_off.png";
 
   private readonly PROGRESS_BAR_WIDTH = 640;
   private readonly VOLUME_BAR_HEIGHT = 360;
 
   togglePlayState: string = "Play";
   toggleMuteState: string = "Mute";
-  toggleSubtitlesState: string = "OFF";
   togglePlayUrl: string = this.PLAY_URL;
   toggleMuteUrl: string = this.MUTE_URL;
-  toggleSubtitlesUrl: string = this.SUBTITLES_OFF_URL;
 
   progressWidth: string = "0px";
   currentTime: string = "00:00";
@@ -96,18 +92,6 @@ export class VideoComponent implements OnInit {
     this.volumeMarginTop = this.VOLUME_BAR_HEIGHT - (this.VOLUME_BAR_HEIGHT * changeTo) + 'px';
     this.video.nativeElement.volume = changeTo;
   }
-
-  toggleSubtitles() {
-    if (this.toggleSubtitlesState === 'ON') {
-      this.video.nativeElement.textTracks[0].mode = 'hidden'
-      this.toggleSubtitlesState = "OFF";
-      this.toggleSubtitlesUrl = this.SUBTITLES_OFF_URL;
-    } else {
-      this.video.nativeElement.textTracks[0].mode = 'showing'
-      this.toggleSubtitlesState = "ON";
-      this.toggleSubtitlesUrl = this.SUBTITLES_ON_URL;
-    }
-  }
   
   toggleMute() {
     if (this.video.nativeElement.muted) {
@@ -136,6 +120,12 @@ export class VideoComponent implements OnInit {
   }
 
   //EVENTS
+  private onChangeSubtitles(value) {
+    for (var i = 0; i < this.video.nativeElement.textTracks.length; i++) {
+      this.video.nativeElement.textTracks[i].mode = this.video.nativeElement.textTracks[i].language == value ? 'showing' : 'hidden';
+    }
+  }
+
   private ended(evt) {
     this.clear();
   }

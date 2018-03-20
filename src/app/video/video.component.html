@@ -1,7 +1,10 @@
 <div>
   <div id="player">
     <video #videoRef id="video" src={{repo?.currentVideo?.url}}>
-      <track *ngIf="repo?.currentVideo?.subtitle" [label]="repo.currentVideo.subtitle.label" [srclang]="repo.currentVideo.subtitle.srclang" [src]="repo.currentVideo.subtitle.src" default [hidden]="toggleSubtitlesState=='ON'">
+      <ng-container *ngIf="repo?.currentVideo?.subtitles">
+        <track *ngFor="let subtitle of repo.currentVideo.subtitles" [label]="subtitle.label" kind="subtitles" [srclang]="subtitle.srclang"
+          [src]="subtitle.src">
+      </ng-container>
     </video>
     <div id="positionview">
       <div id="transportbar" (click)="changePosition($event)">
@@ -38,6 +41,10 @@
       <button (click)="toggleSubtitles()">
         <img src="{{toggleSubtitlesUrl}}" alt="{{toggleSubtitlesState}}" title="{{toggleSubtitlesState}}" />
       </button>
+      <select name="subtitleSelect" (change)="onChangeSubtitles($event.target.value)">
+        <option value="-ninguno-">Sin subtítulos</option>
+        <option *ngFor="let subtitle of repo.currentVideo.subtitles" [value]="subtitle.srclang">{{subtitle.label}}</option>
+      </select>
     </div>
   </div>
 
