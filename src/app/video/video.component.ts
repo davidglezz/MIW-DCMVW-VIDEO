@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import {MediaPlayer} from 'dashjs';
 import { Repository } from "../models/repository";
 
 @Component({
@@ -49,7 +50,13 @@ export class VideoComponent implements OnInit {
       this.togglePlayUrl = this.PLAY_URL;
     }
     else {
-      this.video.nativeElement.play();
+      if (this.video.nativeElement.src.lastIndexOf('.mpd') > 0) {
+        let player = MediaPlayer().create();
+        player.initialize(this.video.nativeElement, this.video.nativeElement.src, true);
+        player.play();
+      } else {
+        this.video.nativeElement.play();
+      }
       this.togglePlayState = "Pause";
       this.togglePlayUrl = this.PAUSE_URL;
     }

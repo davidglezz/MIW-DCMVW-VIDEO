@@ -38,9 +38,6 @@
       <button (click)="toggleMute()">
         <img src="{{toggleMuteUrl}}" alt="{{toggleMuteState}}" title="{{toggleMuteState}}" />
       </button>
-      <button (click)="toggleSubtitles()">
-        <img src="{{toggleSubtitlesUrl}}" alt="{{toggleSubtitlesState}}" title="{{toggleSubtitlesState}}" />
-      </button>
       <select name="subtitleSelect" (change)="onChangeSubtitles($event.target.value)">
         <option value="-ninguno-">Sin subtítulos</option>
         <option *ngFor="let subtitle of repo.currentVideo.subtitles" [value]="subtitle.srclang">{{subtitle.label}}</option>
