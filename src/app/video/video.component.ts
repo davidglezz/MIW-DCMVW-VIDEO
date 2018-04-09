@@ -128,8 +128,9 @@ export class VideoComponent implements OnInit {
 
   //EVENTS
   private onChangeSubtitles(value) {
-    for (var i = 0; i < this.video.nativeElement.textTracks.length; i++) {
-      this.video.nativeElement.textTracks[i].mode = this.video.nativeElement.textTracks[i].language == value ? 'showing' : 'hidden';
+    const tracks = this.video.nativeElement.textTracks;
+    for (var i = 0; i < tracks.length; i++) {
+      tracks[i].mode = tracks[i].language == value ? 'showing' : 'hidden';
     }
   }
 
