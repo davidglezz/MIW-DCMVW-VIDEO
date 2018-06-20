@@ -1,12 +1,14 @@
-FROM mhart/alpine-node:8
+FROM node:alpine
 
 WORKDIR /app
-COPY dist .
-COPY presentacion dist/presentacion
-COPY app.js .
 COPY package.json .
+COPY app.js .
+COPY dist dist
+COPY presentacion dist/presentacion
 
 RUN npm install --production
 
 EXPOSE 8010
+#VOLUME ["/app/dist"]
+
 CMD ["node", "app.js"]
