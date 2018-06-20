@@ -2,7 +2,7 @@ const express = require('express');
 const http = require('http');
 const path = require('path');
 
-// Esto equivale y a modo ejemplo, una api de videos.
+// Esto equivale, a modo ejemplo, a una base de datos de videos.
 const db = [
   {
     videoId: 1,
